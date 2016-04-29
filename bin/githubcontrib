@@ -25,8 +25,10 @@ var logErrors     = function (obj) { console.error(obj); };
  *  Test call to get contributor list and dump to console
  */
 try {
-  contributors( validateArgs() )
-    .loadAll( args.owner,  args.repository, args.authToken || process.env.GITHUB_API_TOKEN, args.fromDate )
+  args = validateArgs();
+  
+  contributors( args )
+    .loadAll( args.fromDate )
     .then( logResults,logErrors );
 } catch( e ) {
   logErrors( e.message );
