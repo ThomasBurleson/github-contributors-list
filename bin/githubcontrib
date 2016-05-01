@@ -15,7 +15,6 @@ var lib           = path.dirname(path.dirname( fs.realpathSync(__filename) ));
 
 var logResults    = function (obj) {
   var wantsJSON   = String(args.format).toLowerCase() == "json";
-
   console.log( wantsJSON ? JSON.stringify(obj) : obj );
 };
 var logErrors     = function (obj) { console.error(obj); };
@@ -30,6 +29,7 @@ try {
   contributors( args )
     .loadAll( args.fromDate )
     .then( logResults,logErrors );
+
 } catch( e ) {
   logErrors( e.message );
 }
